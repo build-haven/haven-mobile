@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import type { Profile } from '@/src/constants/mockProfiles';
 
@@ -16,7 +16,7 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
     <View className="flex-1 overflow-hidden rounded-3xl bg-haven-dark shadow-lg">
       <Image
         source={{ uri: primaryPhoto }}
-        className="absolute inset-0 h-full w-full"
+        style={StyleSheet.absoluteFillObject}
         contentFit="cover"
         transition={300}
       />
@@ -24,7 +24,7 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
       <LinearGradient
         colors={['transparent', 'rgba(15, 15, 20, 0.55)', 'rgba(15, 15, 20, 0.92)']}
         locations={[0.45, 0.72, 1]}
-        className="absolute inset-x-0 bottom-0 h-[55%]"
+        style={styles.gradient}
       />
 
       <View className="absolute inset-x-0 bottom-0 p-5 pb-6">
@@ -65,3 +65,13 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  gradient: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: '55%',
+  },
+});
